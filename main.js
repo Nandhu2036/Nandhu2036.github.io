@@ -484,6 +484,32 @@ function initArchiveExplorer() {
   searchInput.addEventListener('input', () => {
     filterArchiveData();
   });
+
+  // Open modal triggers
+  const openArchiveBtn = document.getElementById('open-archive-btn');
+  const openArchiveVisual = document.getElementById('open-archive-visual-trigger');
+  
+  const openArchive = () => {
+    const modal = document.getElementById('archive-explorer-modal');
+    if (modal) {
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      // Refresh active tab layout when opened
+      switchArchiveTab(activeArchiveTab);
+    }
+  };
+
+  if (openArchiveBtn) openArchiveBtn.addEventListener('click', openArchive);
+  if (openArchiveVisual) openArchiveVisual.addEventListener('click', openArchive);
+
+  // Catch navbar / header Archive links
+  const archiveLinks = document.querySelectorAll('a[href="#archive-explorer"]');
+  archiveLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      openArchive();
+    });
+  });
 }
 
 function switchArchiveTab(tabName) {
@@ -626,6 +652,12 @@ function filterArchiveData() {
   }
 }
 
+function isCADFile(path) {
+  if (!path) return false;
+  const lower = path.toLowerCase();
+  return lower.endsWith('.f3d') || lower.endsWith('.stl') || lower.endsWith('.step');
+}
+
 // 1. Designs Render with viewpoints slideshow
 function renderArchiveDesigns(items) {
   const grid = document.getElementById('explorer-designs-grid');
@@ -648,12 +680,26 @@ function renderArchiveDesigns(items) {
         <span onclick="triggerCrossLink('${cad.relatedContent.link}')" class="crosslink-tag">${cad.relatedContent.text}</span>
       </div>` : '';
 
+    const isCadSource = isCADFile(cad.filePath);
+    let previewImgSrc = cad.filePath;
+    let fallbackImgSrc = 'assets/projects/ecofloat_boat.png';
+    let actionIcon = 'zoom_in';
+    let labelHtml = '';
+
+    if (isCadSource) {
+      previewImgSrc = 'assets/projects/fig-2.png'; // Use blueprint as graphic
+      const ext = cad.filePath.split('.').pop().toUpperCase();
+      labelHtml = `<div class="vault-source-badge">${ext} MODEL</div>`;
+      actionIcon = 'download';
+    }
+
     grid.innerHTML += `
       <div class="design-vault-card">
         <div class="vault-img-box" onclick="openCADLightbox('${cad.id}')">
-          <img src="${cad.filePath}" alt="${cad.title}" onerror="this.src='assets/projects/ecofloat_boat.png';">
+          <img src="${previewImgSrc}" alt="${cad.title}" onerror="this.src='${fallbackImgSrc}';">
+          ${labelHtml}
           <div class="vault-zoom-indicator">
-            <span class="material-symbols-outlined">zoom_in</span>
+            <span class="material-symbols-outlined">${actionIcon}</span>
           </div>
         </div>
         <div class="vault-info-box">
@@ -680,6 +726,19 @@ function renderArchiveDesigns(items) {
 
 function openCADLightbox(cadId) {
   const cad = PROFILE_DATA.cadVault.find(c => c.id === cadId);
+  if (!cad) return;
+
+  if (isCADFile(cad.filePath)) {
+    // If it's a CAD source file, we trigger a download!
+    const link = document.createElement('a');
+    link.href = cad.filePath;
+    link.download = cad.filePath.split('/').pop();
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    return;
+  }
+  
   currentActiveCAD = cad;
   
   const drawer = document.getElementById('lightbox-viewpoints-drawer');
@@ -1388,7 +1447,7 @@ function selectSearchResult(type, param1, param2, param3) {
 /* ==================== 6. MODAL & LIGHTBOX CONTROLLERS ==================== */
 
 function initModals() {
-  const modals = ['project-detail-modal', 'cert-viewer-modal', 'lightbox-modal', 'timeline-detail-drawer', 'presentation-preview-modal', 'video-preview-modal'];
+  const modals = ['archive-explorer-modal', 'project-detail-modal', 'cert-viewer-modal', 'lightbox-modal', 'timeline-detail-drawer', 'presentation-preview-modal', 'video-preview-modal'];
   
   modals.forEach(modalId => {
     const modal = document.getElementById(modalId);

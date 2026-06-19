@@ -348,154 +348,60 @@
     <!-- TIER 3: PORTFOLIO ASSETS (COMPLETE ARCHIVE SYSTEM) -->
 
     <!-- Engineering Knowledge Base & Archive Explorer -->
-    <section id="archive-explorer" class="section-container">
-      <div class="section-title-wrapper">
-        <div class="section-subtitle">Central Knowledge Base & Digital Museum</div>
-        <h2 class="section-title">Engineering Archive Explorer</h2>
-      </div>
-
-      <div class="archive-explorer-container">
-        <!-- Explorer Header: Navigation Tabs -->
-        <div class="archive-tabs-header">
-          <button class="archive-tab-btn active" data-tab="designs">
-            <span class="material-symbols-outlined">model_training</span>
-            <span>Design Vault</span>
-          </button>
-          <button class="archive-tab-btn" data-tab="certificates">
-            <span class="material-symbols-outlined">verified</span>
-            <span>Certificate Vault</span>
-          </button>
-          <button class="archive-tab-btn" data-tab="presentations">
-            <span class="material-symbols-outlined">co_present</span>
-            <span>Presentation Center</span>
-          </button>
-          <button class="archive-tab-btn" data-tab="documents">
-            <span class="material-symbols-outlined">library_books</span>
-            <span>Document Hub</span>
-          </button>
-          <button class="archive-tab-btn" data-tab="research">
-            <span class="material-symbols-outlined">science</span>
-            <span>Research Hub</span>
-          </button>
-          <button class="archive-tab-btn" data-tab="videos">
-            <span class="material-symbols-outlined">videocam</span>
-            <span>Videos Player</span>
-          </button>
-        </div>
-
-        <!-- Dynamic Archive Workspace -->
-        <div class="archive-workspace">
+    <!-- Engineering Knowledge Base & Archive Promo -->
+    <section id="archive-promo" class="section-container">
+      <div class="archive-promo-grid">
+        <div class="archive-promo-content">
+          <div class="section-subtitle">Central Knowledge Base &amp; Digital Museum</div>
+          <h2 class="section-title">Engineering Archive Explorer</h2>
+          <p class="section-desc">An immersive, interconnected central library containing CAD assemblies, professional certificates, slide presentations, technical documents, and research papers from my academic and design journey.</p>
           
-          <!-- Persistent Sidebar Controls -->
-          <aside class="archive-sidebar">
-            <div class="sidebar-widget">
-              <h4>Filter & Locate</h4>
-              <div class="archive-search-box">
-                <span class="material-symbols-outlined">search</span>
-                <input type="text" id="archive-sidebar-search" placeholder="Query archive properties...">
-              </div>
+          <div class="archive-stats-row">
+            <div class="archive-stat-item">
+              <span class="stat-num">50+</span>
+              <span class="stat-lbl">CAD Models</span>
             </div>
-
-            <!-- Contextual Filter Lists (Loaded Dynamically) -->
-            <div class="sidebar-widget" id="sidebar-filters-widget">
-              <!-- Rendered contextually depending on active tab -->
+            <div class="archive-stat-item">
+              <span class="stat-num">28</span>
+              <span class="stat-lbl">Exercises</span>
             </div>
-            
-            <div class="sidebar-widget info-widget">
-              <span class="material-symbols-outlined text-gold">info</span>
-              <p>This archive is an interconnected record database. Click tags or related link items to launch details logs.</p>
+            <div class="archive-stat-item">
+              <span class="stat-num">10+</span>
+              <span class="stat-lbl">Credentials</span>
             </div>
-          </aside>
-
-          <!-- Main Archive Grid/List Pane -->
-          <div class="archive-pane">
-            
-            <!-- Designs Tab Workspace -->
-            <div class="archive-tab-pane active" id="pane-designs">
-              <div class="design-vault-grid" id="explorer-designs-grid">
-                <!-- CAD Cards rendered via JS -->
-              </div>
+            <div class="archive-stat-item">
+              <span class="stat-num">5+</span>
+              <span class="stat-lbl">Reports</span>
             </div>
-
-            <!-- Certificates Tab Workspace -->
-            <div class="archive-tab-pane" id="pane-certificates">
-              <div class="vault-controls" style="border:none; padding: 0 0 16px 0; margin-bottom:16px;">
-                <div class="view-mode-group">
-                  <button class="view-mode-btn active" id="btn-cert-grid">
-                    <span class="material-symbols-outlined">grid_view</span> Grid
-                  </button>
-                  <button class="view-mode-btn" id="btn-cert-timeline">
-                    <span class="material-symbols-outlined">timeline</span> Chronology
-                  </button>
-                </div>
-              </div>
-              
-              <!-- Grid Container -->
-              <div class="certificate-grid" id="explorer-certs-grid">
-                <!-- Cert cards rendered via JS -->
-              </div>
-
-              <!-- Chronological Timeline Container -->
-              <div class="certs-timeline-container" id="explorer-certs-timeline" style="display:none;">
-                <!-- Vertical certificate timeline -->
-              </div>
-            </div>
-
-            <!-- Presentations Tab Workspace -->
-            <div class="archive-tab-pane" id="pane-presentations">
-              <div class="presentations-grid" id="explorer-presentations-grid">
-                <!-- Presentation cards rendered via JS -->
-              </div>
-            </div>
-
-            <!-- Documents Tab Workspace -->
-            <div class="archive-tab-pane" id="pane-documents">
-              <div class="document-table-container" style="box-shadow:none; border:none;">
-                <table class="doc-table">
-                  <thead>
-                    <tr>
-                      <th>Document Name</th>
-                      <th>Tools Used</th>
-                      <th>Category</th>
-                      <th>Size</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody id="explorer-documents-table">
-                    <!-- Document rows rendered via JS -->
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            <!-- Research Tab Workspace -->
-            <div class="archive-tab-pane" id="pane-research">
-              <div class="document-table-container" style="box-shadow:none; border:none;">
-                <table class="doc-table">
-                  <thead>
-                    <tr>
-                      <th>Research Paper Title</th>
-                      <th>Boundary Software</th>
-                      <th>Size</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody id="explorer-research-table">
-                    <!-- Research paper rows rendered via JS -->
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            <!-- Videos Tab Workspace -->
-            <div class="archive-tab-pane" id="pane-videos">
-              <div class="videos-grid" id="explorer-videos-grid">
-                <!-- Video cards rendered via JS -->
-              </div>
-            </div>
-
           </div>
 
+          <button id="open-archive-btn" class="btn btn-primary" style="margin-top: 32px;">
+            <span class="material-symbols-outlined">explore</span>
+            <span>Launch Archive Terminal</span>
+          </button>
+        </div>
+        
+        <div class="archive-promo-visual" id="open-archive-visual-trigger">
+          <div class="visual-stack-wrapper">
+            <div class="visual-card card-3"></div>
+            <div class="visual-card card-2"></div>
+            <div class="visual-card card-1">
+              <div class="visual-card-header">
+                <span class="material-symbols-outlined text-indigo">database</span>
+                <span class="card-title">Archive Explorer v2.0</span>
+              </div>
+              <div class="visual-card-body">
+                <div class="mock-line short"></div>
+                <div class="mock-line long"></div>
+                <div class="mock-line medium"></div>
+                <div class="mock-grid">
+                  <div class="mock-box"></div>
+                  <div class="mock-box"></div>
+                  <div class="mock-box"></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -693,6 +599,169 @@
 
       <div class="search-modal-footer">
         <span>Use <kbd>↑</kbd> <kbd>↓</kbd> to navigate, <kbd>Enter</kbd> to select, <kbd>Esc</kbd> to close</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. Fullscreen Engineering Archive Modal -->
+  <div id="archive-explorer-modal" class="modal-overlay archive-modal-overlay">
+    <div class="archive-modal-window">
+      <div class="archive-modal-header">
+        <div class="archive-modal-title-box">
+          <span class="material-symbols-outlined text-indigo" style="font-size:24px;">database</span>
+          <div>
+            <h3>Engineering Archive Explorer</h3>
+            <span class="archive-modal-subtitle">Central Knowledge Base &amp; Digital Museum</span>
+          </div>
+        </div>
+        <button class="modal-close-btn" id="close-archive-btn" aria-label="Close Archive" style="position:static;">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      
+      <div class="archive-explorer-container">
+        <!-- Explorer Header: Navigation Tabs -->
+        <div class="archive-tabs-header">
+          <button class="archive-tab-btn active" data-tab="designs">
+            <span class="material-symbols-outlined">model_training</span>
+            <span>Design Vault</span>
+          </button>
+          <button class="archive-tab-btn" data-tab="certificates">
+            <span class="material-symbols-outlined">verified</span>
+            <span>Certificate Vault</span>
+          </button>
+          <button class="archive-tab-btn" data-tab="presentations">
+            <span class="material-symbols-outlined">co_present</span>
+            <span>Presentation Center</span>
+          </button>
+          <button class="archive-tab-btn" data-tab="documents">
+            <span class="material-symbols-outlined">library_books</span>
+            <span>Document Hub</span>
+          </button>
+          <button class="archive-tab-btn" data-tab="research">
+            <span class="material-symbols-outlined">science</span>
+            <span>Research Hub</span>
+          </button>
+          <button class="archive-tab-btn" data-tab="videos">
+            <span class="material-symbols-outlined">videocam</span>
+            <span>Videos Player</span>
+          </button>
+        </div>
+
+        <!-- Dynamic Archive Workspace -->
+        <div class="archive-workspace">
+          
+          <!-- Persistent Sidebar Controls -->
+          <aside class="archive-sidebar">
+            <div class="sidebar-widget">
+              <h4>Filter &amp; Locate</h4>
+              <div class="archive-search-box">
+                <span class="material-symbols-outlined">search</span>
+                <input type="text" id="archive-sidebar-search" placeholder="Query archive properties...">
+              </div>
+            </div>
+
+            <!-- Contextual Filter Lists (Loaded Dynamically) -->
+            <div class="sidebar-widget" id="sidebar-filters-widget">
+              <!-- Rendered contextually depending on active tab -->
+            </div>
+            
+            <div class="sidebar-widget info-widget">
+              <span class="material-symbols-outlined text-gold">info</span>
+              <p>This archive is an interconnected record database. Click tags or related link items to launch details logs.</p>
+            </div>
+          </aside>
+
+          <!-- Main Archive Grid/List Pane -->
+          <div class="archive-pane">
+            
+            <!-- Designs Tab Workspace -->
+            <div class="archive-tab-pane active" id="pane-designs">
+              <div class="design-vault-grid" id="explorer-designs-grid">
+                <!-- CAD Cards rendered via JS -->
+              </div>
+            </div>
+
+            <!-- Certificates Tab Workspace -->
+            <div class="archive-tab-pane" id="pane-certificates">
+              <div class="vault-controls" style="border:none; padding: 0 0 16px 0; margin-bottom:16px;">
+                <div class="view-mode-group">
+                  <button class="view-mode-btn active" id="btn-cert-grid">
+                    <span class="material-symbols-outlined">grid_view</span> Grid
+                  </button>
+                  <button class="view-mode-btn" id="btn-cert-timeline">
+                    <span class="material-symbols-outlined">timeline</span> Chronology
+                  </button>
+                </div>
+              </div>
+              
+              <!-- Grid Container -->
+              <div class="certificate-grid" id="explorer-certs-grid">
+                <!-- Cert cards rendered via JS -->
+              </div>
+
+              <!-- Chronological Timeline Container -->
+              <div class="certs-timeline-container" id="explorer-certs-timeline" style="display:none;">
+                <!-- Vertical certificate timeline -->
+              </div>
+            </div>
+
+            <!-- Presentations Tab Workspace -->
+            <div class="archive-tab-pane" id="pane-presentations">
+              <div class="presentations-grid" id="explorer-presentations-grid">
+                <!-- Presentation cards rendered via JS -->
+              </div>
+            </div>
+
+            <!-- Documents Tab Workspace -->
+            <div class="archive-tab-pane" id="pane-documents">
+              <div class="document-table-container" style="box-shadow:none; border:none;">
+                <table class="doc-table">
+                  <thead>
+                    <tr>
+                      <th>Document Name</th>
+                      <th>Tools Used</th>
+                      <th>Category</th>
+                      <th>Size</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="explorer-documents-table">
+                    <!-- Document rows rendered via JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Research Tab Workspace -->
+            <div class="archive-tab-pane" id="pane-research">
+              <div class="document-table-container" style="box-shadow:none; border:none;">
+                <table class="doc-table">
+                  <thead>
+                    <tr>
+                      <th>Research Paper Title</th>
+                      <th>Boundary Software</th>
+                      <th>Size</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="explorer-research-table">
+                    <!-- Research paper rows rendered via JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Videos Tab Workspace -->
+            <div class="archive-tab-pane" id="pane-videos">
+              <div class="videos-grid" id="explorer-videos-grid">
+                <!-- Video cards rendered via JS -->
+              </div>
+            </div>
+
+          </div>
+
+        </div>
       </div>
     </div>
   </div>
